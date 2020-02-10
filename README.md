@@ -4,6 +4,8 @@ C20 is a C version of my D20 Python program.
 
 It's a command line program that rolls D&D dice.
 
+!! - project not finished yet
+
 ### Installation
 
 ```
