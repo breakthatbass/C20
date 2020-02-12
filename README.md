@@ -4,8 +4,6 @@ C20 is a C version of my D20 Python program.
 
 It's a command line program that rolls D&D dice.
 
-!! - project not finished yet
-
 ### Installation
 
 ```
@@ -32,11 +30,15 @@ The third argument is a modifier which is a number with '+' or '-' in front of i
 
 run with one of 6 dice: d4, d6, d8, d10, d12, d20
 ```
-./main die
+$ ./main die
+```
+or with additional arguments
+```
+$ ./main die rolls modifier
 ```
 Example with all three arguments
 ```
-./main d20 3 +3
+$ ./main d20 3 +3
 ```
 which might return something like
 ```
