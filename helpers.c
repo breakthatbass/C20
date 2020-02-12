@@ -7,6 +7,7 @@
 
 #define MAX 6
 
+// create struct to store the dice and values
 typedef struct
 {
     char *d;
@@ -35,16 +36,22 @@ int check_die(char *die, int rolls, int modifier)
 
     for (int i = 0; i < MAX; i++)
     {
+        // if argv[1] == any of the dice in the struct...
         if (strcmp(dices[i].d, die) == 0)
         {
             die_val = &dices[i].v;
         }
     }
-    
+    // if argv[1] don't match any dice in struct...
     if (die_val == 0)
     {
+        // print the valid dice arguments and exit program
+        printf("\033[0;34m");
         printf("Not a valid die\n");
+        printf("\033[0m");
+        printf("\033[0;32m");
         printf("Valid Dice:\n");
+        printf("\033[0m");
         for (int i = 0; i < MAX; i++)
         {
             printf("%s\n", dices[i].d);
@@ -86,13 +93,13 @@ void roll_dice(int die, int rolls, int modifier)
         // account for crit hit and misses while rolling a d20
         if (cast == 20)
         {
-            printf("\033[1m\033[32m");
+            printf("\033[1m\033[32m"); // print in green bold
             printf("Roll %i is 20! Ciritical hit!\n", i);
             printf("\033[0m");
         } 
         else if (cast == 1 && die == 20)
         {
-            printf("\033[1m\033[31m");
+            printf("\033[1m\033[31m"); // print in red bold
             printf("Roll %i is 1. Critical miss! Dangit!\n", i);
             printf("\033[0m"); 
         }
