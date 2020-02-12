@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h> 
+#include <stdbool.h>
 
 #define MAX 6
 
@@ -12,7 +13,6 @@ typedef struct
     int v;
 }
 dice;
-
 
 int check_die(char *die, int rolls, int modifier)
 {
@@ -48,8 +48,8 @@ int check_die(char *die, int rolls, int modifier)
         for (int i = 0; i < MAX; i++)
         {
             printf("%s\n", dices[i].d);
-            return 1;
         }
+        exit(1);
     }
 
     return *die_val;
@@ -64,39 +64,60 @@ void roll_dice(int die, int rolls, int modifier)
     srand(time(0));
     for (int i = 1; i <= rolls; i++)
     {
+        // Kepp track of crit to use to not show base and modifier if they are implemented
+        bool crit = false;
         // int cast = randint(die);
         int cast = (rand() % (die - 1 + 1)) + 1;
 
+        if (cast == 20){ // critical hit true
+            crit = true;
+        }
+        if (cast == 1 && die == 20){ // critical miss true
+            crit = true;
+        }
+
         // print info about rolls if there is a modifier
-        if (modifier != 0 && cast != 20 && cast != 1)
+        if (modifier != 0 && crit == false)
         {
-            printf("Base cast is %i\n", cast);
-            printf("Modifier is %i\n", modifier);
+                printf("Base cast is %i\n", cast);
+                printf("Modifier is %i\n", modifier);
         }
 
         // account for crit hit and misses while rolling a d20
         if (cast == 20)
         {
+            printf("\033[1m\033[32m");
             printf("Roll %i is 20! Ciritical hit!\n", i);
+            printf("\033[0m");
         } 
         else if (cast == 1 && die == 20)
         {
+            printf("\033[1m\033[31m");
             printf("Roll %i is 1. Critical miss! Dangit!\n", i);
+            printf("\033[0m"); 
         }
         // if the modifer makes the roll go below 1, print 1
         else if (cast + (modifier) < 1)
         {
+            printf("\033[36m");
             printf("Roll %i is 1\n", i);
+            printf("\033[0m"); 
         }
         // otherwise just do the  math and print the value
         else if (modifier != 0)
         {
+            printf("\033[36m");
             printf("Roll %i is %i\n", i, cast + (modifier));
+            printf("\033[0m"); 
         }
-        else
+        else // just print the rolls with no info if no additional args are inputted
         {
+            printf("\033[36m");
             printf("Roll %i is %i\n", i, cast);
+            printf("\033[0m"); 
         }
         printf("----------------\n");
+        // reset crit tracker
+        crit = false;
     }
 }
