@@ -68,7 +68,7 @@ void roll_dice(int die, int rolls, int modifier)
         int cast = (rand() % (die - 1 + 1)) + 1;
 
         // print info about rolls if there is a modifier
-        if (modifier != 0)
+        if (modifier != 0 && cast != 20 && cast != 1)
         {
             printf("Base cast is %i\n", cast);
             printf("Modifier is %i\n", modifier);
