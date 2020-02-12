@@ -29,6 +29,9 @@ int main(int argc, char *argv[])
         modifier = atoi(argv[3]);
     }
 
-    printf("%i\n", check_die(die));
+    int new_die = check_die(die, rolls, modifier);
+    
+    roll_dice(new_die, rolls, modifier);
+    //return 0;
 
 }
