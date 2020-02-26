@@ -62,7 +62,6 @@ int check_die(char *die, int rolls, int modifier)
     return *die_val;
 }
 
-
 void roll_dice(int die, int rolls, int modifier)
 {
     
@@ -86,8 +85,8 @@ void roll_dice(int die, int rolls, int modifier)
         // print info about rolls if there is a modifier
         if (modifier != 0 && crit == false)
         {
-                printf("Base cast is %i\n", cast);
-                printf("Modifier is %i\n", modifier);
+            printf("Base cast is %i\n", cast);
+            printf("Modifier is %i\n", modifier);
         }
 
         // account for crit hit and misses while rolling a d20
