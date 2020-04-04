@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
         printf("\n");
         printf("\033[1m\033[31m"); // print in red bold
         printf("Usage:");
-        printf("\033[0m"); 
+        printf("\033[0m");
         printf(" ./dice\n");
         printf("\n");
         printf("Optional Arguments:\n");
@@ -41,8 +41,8 @@ int main(int argc, char *argv[])
     }
 
     // take the input string for the die and set its value to new_die
-    int new_die = check_die(die, rolls, modifier);
-    
+    int new_die = check_die(die);
+
     // take the die value, amount of rolls, and modifier and roll
     roll_dice(new_die, rolls, modifier);
     //return 0;

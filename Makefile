@@ -1,2 +1,19 @@
-dice:
-	clang -O0 -Qunused-arguments -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wshadow -o dice dice.c helpers.c
+  
+CC=gcc
+CFLAGS=-lm -std=c99 -pedantic
+PREFIX=/usr/local
+ifndef NAME
+    NAME=dice
+endif
+
+all: dice
+
+dice: dice.c helpers.c
+	$(CC) -o $(NAME) dice.c helpers.c $(CFLAGS)
+
+install: dice
+	mkdir -p $(DESTDIR)$(PREFIX)/bin
+	cp $< $(DESTDIR)$(PREFIX)/bin/$(NAME)
+
+clean:
+	rm $(NAME)

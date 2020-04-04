@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <time.h> 
+#include <time.h>
 #include <stdbool.h>
 
 #define MAX 6
@@ -15,7 +15,7 @@ typedef struct
 }
 dice;
 
-int check_die(char *die, int rolls, int modifier)
+int check_die(char *die)
 {
     int *die_val = 0; // variable to determine whether the input is in struct
     dice dices[MAX];
@@ -64,7 +64,7 @@ int check_die(char *die, int rolls, int modifier)
 
 void roll_dice(int die, int rolls, int modifier)
 {
-    
+
     printf("----------------\n");
     // roll dice as many times as requested
     srand(time(0));
@@ -95,32 +95,32 @@ void roll_dice(int die, int rolls, int modifier)
             printf("\033[1m\033[32m"); // print in green bold
             printf("Roll %i is 20! Ciritical hit!\n", i);
             printf("\033[0m");
-        } 
+        }
         else if (cast == 1 && die == 20)
         {
             printf("\033[1m\033[31m"); // print in red bold
             printf("Roll %i is 1. Critical miss! Dangit!\n", i);
-            printf("\033[0m"); 
+            printf("\033[0m");
         }
         // if the modifer makes the roll go below 1, print 1
         else if (cast + (modifier) < 1)
         {
             printf("\033[36m");
             printf("Roll %i is 1\n", i);
-            printf("\033[0m"); 
+            printf("\033[0m");
         }
         // otherwise just do the  math and print the value
         else if (modifier != 0)
         {
             printf("\033[36m");
             printf("Roll %i is %i\n", i, cast + (modifier));
-            printf("\033[0m"); 
+            printf("\033[0m");
         }
         else // just print the rolls with no info if no additional args are inputted
         {
             printf("\033[36m");
             printf("Roll %i is %i\n", i, cast);
-            printf("\033[0m"); 
+            printf("\033[0m");
         }
         printf("----------------\n");
         // reset crit tracker
