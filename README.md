@@ -9,13 +9,9 @@ It's a command line program that rolls D&D dice.
 ```
 $ git clone https://github.com/breakthatbass/D20.git
 ```
-cd to the directory
+
 ```
-$ cd C20 or cd path/to/C20
-```
-complile with Make
-```
-$ make dice
+$ make install
 ```
 
 ### Usage
@@ -30,15 +26,15 @@ The third argument is a modifier which is a number with '+' or '-' in front of i
 
 run with one of 6 dice: d4, d6, d8, d10, d12, d20
 ```
-$ ./dice die
+$ dice die
 ```
 or with additional arguments
 ```
-$ ./dice die rolls modifier
+$ dice die rolls modifier
 ```
 Example with all three arguments
 ```
-$ ./dice d20 3 +3
+$ dice d20 3 +3
 ```
 which might return something like
 ```
