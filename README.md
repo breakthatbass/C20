@@ -7,7 +7,7 @@ It's a command line program that rolls D&D dice.
 ### Installation
 
 ```
-$ git clone https://github.com/breakthatbass/D20.git
+$ git clone https://github.com/breakthatbass/C20.git
 ```
 
 ```
